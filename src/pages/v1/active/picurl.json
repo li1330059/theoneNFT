@@ -1,0 +1,23 @@
+{
+  "bgUrl": "//static.theone.art/pc/active/tktwo/bg.png",
+  "bgColor": "#fff",
+  "boxShadowColor": "linear-gradient(232deg, #f7f7f7, #e5e4e4)",
+  "boxTitle": "丰子恺数字藏品第二弹",
+  "boxTitleIcon": "//static.theone.art/pc/active/tktwo/title-icon.png",
+  "boxTxtList": [
+    "丰子恺为中国现代画家，散文家，美术教育家，音乐教育家，漫画家，作家，书法家及翻译家，是中国现代漫画事业的先驱。他是一位新文化运动的启蒙者，一位有思想的散文家和翻译家，一位有追求有格调的音乐教育家，一位有爱有担当的教育者，一位爱书爱孩子，爱猫爱太极的邻家耆老，更是一位有爱心有童趣，风格卓然的画家。",
+    "丰声文化（100%股东丰睿系丰子恺先生曾孙）拥有网站、公众号、自媒体矩阵。而丰子恺先生本人相关内容更是常常被人民日报、央视网等主流官媒推文转载。丰氏后代截止至今，出版相关书籍，已有200余册，组织数十场线下大型展览，其中2018年10月25日，在中国美术展览馆，由中国美术馆、桐乡市人民政府、上海黄浦区丰子恺研究会主办的“漫画人间——丰子恺的艺术世界”展览，更是打破当时展馆开馆以来，日均流量的记录。"
+  ],
+  "boxBtnBgColor": "linear-gradient(232deg, #252019, #272727)",
+  "boxBtnColor": "#ffffff",
+  "boxBtnIcon": "//static.theone.art/pc/active/icon-sign.png",
+  "contentCount": 4,
+  "folder": "tktwo",
+  "picType": ".png",
+  "pc": {
+    "bgTitle": "//static.theone.art/pc/active/tktwo/title.png"
+  },
+  "mobile": {
+    "bgTitle": "//static.theone.art/pc/active/tktwo/title.png"
+  }
+}

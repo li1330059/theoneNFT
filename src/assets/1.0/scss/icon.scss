@@ -1,0 +1,103 @@
+// 商品详情页
+.v1-icon-people {
+  background: url("//static.theone.art/pc/images/pic-home/people.png") no-repeat
+    left center;
+  background-size: 14px 14px;
+  padding-left: 18px;
+}
+
+.v1-icon-question {
+  background: url("//static.theone.art/pc/images/question.png") no-repeat right
+    center;
+  background-size: 14px 14px;
+  padding-right: 18px;
+}
+
+.v1-icon-copy {
+  background: url("//static.theone.art/pc/images/pic-home/copy.png") no-repeat
+    right center;
+  background-size: 14px 14px;
+  padding-right: 18px;
+  cursor: pointer;
+}
+
+.v1-icon-skuno {
+  line-height: 18px;
+  background: linear-gradient(154deg, #282828 0%, #484848 100%);
+  color: #e7aa71;
+  font-size: 12px;
+  text-align: right;
+  padding: 0 6px 0 16px;
+  display: inline-block;
+  border-radius: 4px;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-left: 10px;
+  .icon-star {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(-46%);
+  }
+}
+
+.icon-author {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url("//static.theone.art/pc/images/yishujia%402x.png") no-repeat
+    center;
+  background-size: contain;
+}
+
+.ui-icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.icon-radius-default {
+  background-image: url("//static.theone.art/pc/icons/icon-select.png");
+}
+.icon-radius-selected {
+  background-image: url("//static.theone.art/pc/icons/icon-selected.png");
+}
+.icon-help-2 {
+  background-image: url("//static.theone.art/pc/icons/icon-help-2.png");
+}
+.icon-author {
+  background-image: url("//static.theone.art/pc/icons/icon-author.png");
+  width: 14px;
+  height: 14px;
+}
+
+.icon-c-1 {
+  background-image: url("//static.theone.art/pc/images/nav/icon-nav-1.png");
+}
+.icon-c-2 {
+  background-image: url("//static.theone.art/pc/images/nav/icon-nav-2.png");
+}
+.icon-c-3 {
+  background-image: url("//static.theone.art/pc/images/nav/icon-nav-3.png");
+}
+.icon-c-4 {
+  background-image: url("//static.theone.art/pc/images/nav/icon-nav-4.png");
+}
+.icon-c-5 {
+  background-image: url("//static.theone.art/pc/images/nav/icon-nav-5.png");
+}
+.icon-ip-tip {
+  background-image: url("https://theoneart-public.oss-cn-qingdao.aliyuncs.com/pc/mine/icon-ip-tip.png");
+}
+.icon-ip-mobile {
+  background-image: url("https://theoneart-public.oss-cn-qingdao.aliyuncs.com/pc/mine/icon-ip-mobile.png");
+}
+.icon-c-11 {
+  background-image: url("https://theoneart-public.oss-cn-qingdao.aliyuncs.com/pc/icons/icon-sell-type.png");
+}

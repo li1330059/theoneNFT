@@ -1,0 +1,38 @@
+@import "./var/color";
+
+.money-color {
+  color: $art-money-color;
+}
+
+.text-danger-color {
+  color: $art-danger-color;
+}
+.text-info-color {
+  color: $art-info-color;
+}
+.text-warning-color {
+  color: $art-warning-color;
+}
+//一级文字
+.text-color-1 {
+  color: $art-grey-90;
+}
+//二级文字
+.text-color-2 {
+  color: $art-grey-80;
+}
+//三级文字
+.text-color-3 {
+  color: $art-grey-70;
+}
+//不可点击文字色
+.text-disabled-color {
+  color: $art-grey-60;
+}
+//页面背景色
+.page-bg-color {
+  background: $art-bg-color;
+  @media screen and (max-width: 540px) {
+    background: $art-mobile-bg-color;
+  }
+}

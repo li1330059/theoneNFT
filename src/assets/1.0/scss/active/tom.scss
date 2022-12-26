@@ -1,0 +1,64 @@
+$base-font-color: #2b3358 !default;
+$white: #fff !default;
+
+/* tab
+
+material
+title
+des */
+
+.btn {
+    line-height: 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease-out 0.16s;
+    &:active {
+        opacity: 0.9;
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+    @media screen and (max-width: 540px) {
+        font-size: 0.24rem;
+        line-height: 0.68rem;
+        margin-top: 0.12rem;
+    }
+}
+
+.btn-border {
+    border: 1px solid $base-font-color;
+    color: $base-font-color;
+}
+.btn-bg {
+    background: $base-font-color;
+    color:$white;
+}
+.btn-linear {
+    color: $base-font-color;
+    background: linear-gradient(270deg, #94aeff 0%, #f0d5ff 100%);
+}
+.btn-disabled {
+    background: #cccccc;
+    color: #666666;
+}
+
+.content-w {
+    width: 100%;
+    max-width: 1199px;
+    margin: 0 auto;
+    @media screen and (max-width: 540px) {
+        max-width: inherit;
+        padding: 0 0.6rem;
+    }
+}
+.responsive-img {
+    display: block;
+    width: 100%;
+}
+.bg{
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center;
+}

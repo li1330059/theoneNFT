@@ -1,0 +1,224 @@
+.ll-btn {
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 55px;
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+  padding: 0 40px;
+  cursor: pointer;
+}
+.ll-btn-default {
+  background: #adadad;
+  color: #ffffff;
+}
+.ll-btn-primary {
+  background: #343edf;
+  color: #fff;
+}
+.ll-btn-primary-shadow {
+  box-shadow: 0rem 0.18rem 0.46rem 0rem rgba(52, 62, 223, 0.35);
+}
+.ll-btn-warning {
+  background: #ff6e1f;
+  box-shadow: 0px 9px 23px 0px rgba(255, 110, 31, 0.35);
+  color: #fff;
+
+  @media screen and (max-width: 540px) {
+    box-shadow: 0rem 0.18rem 0.46rem 0rem rgba(255, 110, 31, 0.35);
+  }
+}
+
+.link-btn {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(51, 62, 223, 1);
+  cursor: pointer;
+}
+.ll-btn-disabled {
+  background: rgba(153, 153, 153, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+  box-shadow: none !important;
+}
+.ll-max-width {
+  width: 405px;
+  height: 812px;
+  margin: 0 auto;
+  /*   transform: translate(-50%,-50%); */
+  position: relative;
+  top: 10vh;
+  left: 0;
+  padding: 16px 22px 0;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 540px) {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: initial;
+    width: 100%;
+    padding: 0.2rem 0.4rem 0;
+    height: 100%;
+    box-shadow: none;
+  }
+}
+.ll-body-x-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
+.ll-btn-full {
+  width: 92%;
+  margin: 0 auto;
+  display: block;
+  @media screen and (max-width: 540px) {
+    width: 100%;
+  }
+}
+
+.input-line {
+  display: flex;
+  padding: 25px 0 12px;
+  border-bottom: 1px solid #f7f7f7;
+  align-items: center;
+  .label {
+    display: inline-block;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #999999;
+    word-break: keep-all;
+  }
+  .input-box {
+    flex: 1;
+  }
+  ::v-deep .el-input__inner {
+    border: none;
+    padding: 0;
+    line-height: 22px;
+    height: 22px;
+    background-color: transparent;
+  }
+  ::v-deep .el-input.is-disabled .el-input__inner {
+    background-color: inherit;
+    color: #787878;
+    opacity: 1;
+  }
+  @media screen and (max-width: 540px) {
+    .label {
+      font-size: 0.32rem;
+      width: 2.1rem;
+    }
+  }
+}
+
+.v-code-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  .el-input {
+    flex: 1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+.hand {
+  cursor: pointer;
+}
+.responsive-img {
+  display: block;
+  width: 100%;
+}
+.bg-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.fixed-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  @media screen and (max-width: 540px) {
+    padding: 0 0.3rem;
+    position: fixed;
+    bottom: 0.32rem;
+    width: 100%;
+  }
+}
+.fixed-bottom-bottom {
+  /*   bottom: 40px; */
+}
+.fixed-full {
+  height: 100%;
+  padding: 0;
+  @media screen and (max-width: 540px) {
+    padding: 0;
+  }
+}
+
+.bottom-btn-wrap {
+  justify-content: space-between;
+  display: flex;
+  padding: 0 16px;
+  .ll-btn {
+    width: 48%;
+  }
+}
+.ll-block-body {
+  padding-bottom: 120px;
+}
+
+.ll-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+.icon-radius-default {
+  background-image: url("//static.theone.art/pc/ll-bag/icon-radius-default.png");
+}
+.icon-radius-selected {
+  background-image: url("//static.theone.art/pc/ll-bag/icon-radius-selected.png");
+}
+.icon-p-right {
+  background-image: url("//static.theone.art/pc/ll-bag/icon-p-right.png");
+}
+.icon-idcard {
+  background-image: url("//static.theone.art/pc/ll-bag/bank-card-bg-1.png");
+}
+.icon-bank-add {
+  background-image: url("//static.theone.art/pc/ll-bag/icon-card.png");
+}
+.icon-close {
+  background-image: url("//static.theone.art/pc/ll-bag/icon-close.png");
+}
+.icon-money {
+  background-image: url("//static.theone.art/pc/ll-bag/icon-money.png");
+}
+.icon-q-white {
+  background-image: url("https://static.theone.art/pc/ll-bag/icon-q-white.png");
+}
+.cus-color {
+  ::v-deep .post-code {
+    color: #333edf;
+  }
+  ::v-deep .disabled {
+    color: #c1c1c1;
+  }
+}
+.ll-btn-opacity {
+  opacity: 0.3;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}

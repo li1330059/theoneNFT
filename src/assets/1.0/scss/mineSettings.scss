@@ -1,0 +1,53 @@
+/* 个人主页设置样式 */
+@media screen and (max-width: 525px) {
+    $padding-x: 0.32rem;
+    .content-responsive {
+        background-color: #fafafa;
+        padding: 0;
+
+        ::v-deep .el-dialog {
+            width: 100% !important;
+            background-color: #fafafa;
+        }
+        .title {
+            font-size: 0.28rem;
+            font-weight: 400;
+            color: #000000;
+            line-height: 1.04rem;
+            padding: 0 $padding-x;
+            margin: 0;
+        }
+        .input-line {
+            margin: 0 !important;
+        }
+        .phone-code-wrap {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding-right: 0.32rem;
+        }
+        ::v-deep .el-input__inner {
+            border: none;
+            line-height: 1rem;
+            height: 1rem;
+        }
+        ::v-deep .el-dialog__body {
+            padding: 0;
+        }
+        padding-bottom: 1rem;
+        .form-btns {
+            margin-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    }
+    .sub-btn {
+        width: 90%;
+        line-height: 0.72rem;
+        background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+        border-radius: 50px;
+        font-size: 28px;
+        font-weight: 500;
+        color: #ffffff;
+        text-align: center;
+    }
+}

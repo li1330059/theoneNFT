@@ -1,0 +1,43 @@
+// 公共布局 引入样式后 sass可直接继承
+.flex{
+    display: flex;
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.before-hor {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.before-ver {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+}

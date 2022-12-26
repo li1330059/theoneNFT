@@ -1,0 +1,45 @@
+.active-block {
+  display: flex;
+   .left{
+     flex:1;
+   }
+  .img-cover {
+    width: 214px;
+
+  }
+}
+.shadow-block {
+  background: #ffffff;
+  box-shadow: 0px 10px 24px 0px rgba(212, 212, 212, 0.24);
+  border-radius: 4px;
+}
+.txt-info-wrap {
+  .info-wrap {
+    flex: 1;
+    padding: 29px 0 24px 33px;
+  }
+  .txt-info-block{
+    height:66px;
+  }
+  .t1 {
+    width: 134px;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .des {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  .date {
+    font-size: 14px;
+    font-weight: 400;
+    color: #999999;
+  }
+  .ui-btn {
+    margin-top: 26px;
+    padding:0 37px;
+  }
+}

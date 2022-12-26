@@ -1,0 +1,57 @@
+.text-center {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
+.font-600 {
+  font-size: 26px;
+  line-height: 36px;
+}
+.font-500 {
+  font-size: 20px;
+  line-height: 27px;
+}
+.font-400 {
+  font-size: 18px;
+  line-height: 24px;
+}
+.font-300 {
+  font-size: 16px;
+  line-height: 22px;
+}
+.font-200 {
+  font-size: 14px;
+  line-height: 19px;
+}
+.font-100 {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@media screen and (max-width: 540px) {
+  .font-600 {
+    font-size: 0.48rem;
+    line-height: 0.66rem;
+  }
+  .font-500 {
+    font-size: 0.4rem;
+    line-height: 0.54rem;
+  }
+  .font-400 {
+    font-size: 0.36rem;
+    line-height: 0.48rem;
+  }
+  .font-300 {
+    font-size: 0.32rem;
+    line-height: 0.44rem;
+  }
+  .font-200 {
+    font-size: 0.28rem;
+    line-height: 0.38rem;
+  }
+  .font-100 {
+    font-size: 0.24rem;
+    line-height: 0.3rem;
+  }
+}

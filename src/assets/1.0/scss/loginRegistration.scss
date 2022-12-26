@@ -1,0 +1,178 @@
+@mixin input-placeholder {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.2);
+    font-size:.14rem;
+    @media screen and (max-width: 540px) {
+        font-size: 0.28rem;
+    }
+}
+
+@mixin input-format {
+    border: none;
+    outline: none;
+}
+
+@mixin linear-gradient-btn {
+    line-height: 80px;
+    background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+    border-radius: 40px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    color: #ffffff;
+    @media screen and (max-width: 540px) {
+        line-height:.8rem;
+        font-size: .28rem;
+        
+    }
+}
+@mixin input-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+.form-wrap{
+    padding-bottom:100px;
+}
+.header {
+    .logo {
+        width: 1.48rem;
+        display: block;
+        margin: 0.94rem auto 1.6rem;
+    }
+}
+/* 表单-start */
+
+.input-block {
+    @include input-border;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    width:100%;
+    max-width: 380px;
+    input {
+        @include input-format;
+        display: block;
+        line-height: 50px;
+        flex: 1;
+        background-color: transparent;
+        padding: 0 16px;
+    }
+    input::-webkit-input-placeholder {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.2);
+    }
+ 
+
+
+    @media screen and (max-width: 540px) {
+        border: none;
+        border-bottom: 0.02rem solid rgba(0, 0, 0, 0.1) !important;
+        margin-bottom: 0.5rem;
+        max-width: 100%;
+        display: flex;
+ 
+        input {
+            @include input-format;
+            display: block;
+            padding: 0;
+            flex: 1;
+            background-color: transparent;
+            font-size:.32rem;
+        }
+        input::-webkit-input-placeholder {
+            font-size: 0.28rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.2);
+        }
+  
+        .disabled {
+            color: #c1c1c1;
+        }
+    }
+}
+.verification-block {
+    border: none;
+    input {
+        @include input-border;
+    }
+    @media screen and (max-width: 540px) {
+        input {
+            border: none;
+        }
+    }
+}
+
+
+.login-btn {
+    max-width: 380px;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+    border-radius: 50px;
+    line-height: 46px;
+    font-size: 14px;
+    cursor: pointer;
+
+    @media screen and (max-width: 540px) {
+        width: 90%;
+        line-height: 0.8rem;
+        margin:0 auto;
+
+        font-size: 0.28rem;
+        max-width: 100%;
+
+   
+    }
+}
+.disabled-btn{
+    background: rgba(0, 0, 0, 0.2);
+    color:#fff;
+}
+/* 表单-end */
+
+.agreement {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+    color: #666666;
+    font-size: 12px;
+    margin-top: 8px;
+    cursor: pointer;
+    span {
+        display: block;
+        background: url("//static.theone.art/pc/images/pic-home/icon_weigouxuan%402x.png") no-repeat center;
+        background-size: contain;
+        width: 12px;
+        height: 12px;
+        margin-right:4px;
+    }
+    .read{
+       
+        background: url("//static.theone.art/pc/images/pic-home/icon_gouxuan%402x.png") no-repeat center;
+        background-size: contain;
+    }
+    a {
+        color: #000000;
+        font-size: 0.12rem;
+        font-weight: 400;
+    }
+    @media screen and (max-width: 540px) {
+        font-size: 0.24rem;
+        margin-top: 0.4rem;
+        justify-content: center;
+       
+        span {
+            width: 0.24rem;
+            height: 0.24rem;
+           
+            margin-right: 0.04rem;
+        }
+        a {
+            color: #000000;
+            font-size: 0.24rem;
+            font-weight: 400;
+        }
+    }
+}

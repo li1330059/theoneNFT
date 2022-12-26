@@ -1,0 +1,89 @@
+// tabs   
+//  class="v1-tabs"   使用场景   1 个人中心设置   2 个人中心-我买入的 3 个人中心-我提取的 4 个人中心-我发布的 
+.v1-tabs {
+    padding: 7px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba($color: #979797, $alpha: 0.2);
+
+    // 选中是红色的
+    &.red {
+        justify-content: center;
+        padding: 5px 0px;
+
+        ul {
+            justify-content: center;
+
+
+            li {
+                margin: 0 25px;
+
+                a {
+                    font-size: 16px;
+                }
+
+                &::after {
+                    display: none;
+                }
+
+                &.active::after {
+                    display: block;
+                    content: "";
+                    position: absolute;
+                    top: auto;
+                    bottom: -5px;
+                    transform: translate(0);
+                    width: 100%;
+                    height: 2px;
+                    background: #E61F1A;
+                }
+            }
+        }
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+
+        li {
+            padding: 0 14px;
+            position: relative;
+
+            &:last-child::after {
+                display: none;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1px;
+                height: 12px;
+                background: rgba($color: #000000, $alpha: 0.2);
+            }
+
+            &.active {
+                a {
+                    color: #000;
+                }
+            }
+
+            a {
+                font-size: 14px;
+                color: #999999;
+                line-height: 22px;
+                cursor: pointer;
+                white-space: nowrap;
+
+                &:first-child {
+                    padding-left: 0px;
+                }
+
+            }
+        }
+    }
+
+}

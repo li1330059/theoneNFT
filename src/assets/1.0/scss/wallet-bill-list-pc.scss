@@ -1,0 +1,46 @@
+.line-block {
+    padding: 14px 0 12px;
+    .line-bar {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 400;
+        color: #999999;
+        padding: 8px 0;
+        .key {
+            width: 68px;
+            color: rgba(0, 0, 0, 0.4);
+        }
+        .txt {
+            color: #333333;
+        }
+        .flex1 {
+            flex: 1;
+        }
+        .w-200 {
+            width: 200px;
+        }
+        .red-num {
+            font-size: 18px;
+            font-weight: 800;
+            color: #e61f1a;
+        }
+        .success-num {
+            font-size: 18px;
+            font-weight: 800;
+            color: rgba(244, 163, 58, 1);
+        }
+    }
+    .message {
+        font-size: 12px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.7);
+        line-height: 16px;
+        ::v-deepspan {
+            color: #e61f1a;
+        }
+    }
+}
+.ui-bar-border {
+    border-bottom: 1px solid rgba(151, 151, 151, 0.1);
+}

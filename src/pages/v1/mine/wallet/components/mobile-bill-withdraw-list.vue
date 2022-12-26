@@ -1,0 +1,68 @@
+/* 手机端账单 */
+<template>
+  <div>
+    <div
+      class="line-block ui-bar-border"
+      v-for="(item, idx) in listResult.records"
+      :key="idx"
+    >
+      <div class="line-bar">
+        <div>账户余额变动</div>
+        <div>
+          <span class="red-num"> -{{ $common.formatMoney(item.amount) }} </span>
+        </div>
+      </div>
+      <div class="line-bar">
+        <div>{{ item.autoFlag ? "结算时间" : "申请时间" }}</div>
+        <div>
+          {{ item.withdrawalTime || item.createTime }}
+        </div>
+      </div>
+      <div class="line-bar">
+        <div>单据编号</div>
+        <div>
+          {{ item.orderNo }}
+        </div>
+      </div>
+      <div class="message">
+        <div v-if="item.auditStatus == 1">待审核</div>
+        <div v-else-if="item.auditStatus == 2">审核中</div>
+        <div v-else-if="item.auditStatus == 4">审核失败</div>
+        <div v-else-if="item.auditStatus == 3">
+          <span v-if="item.withdrawalStatus == 1"> 待提现</span>
+          <span v-if="item.withdrawalStatus == 2"> 提现中</span>
+          <span v-if="item.withdrawalStatus == 3 || item.withdrawalStatus == 0">
+            {{ item.payChannel == "yb" ? "提现申请成功" : "提现成功" }}</span
+          >
+
+          <span v-if="item.withdrawalStatus == 4"> 提现失败</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  components: {},
+  props: {
+    listResult: {
+      type: Object,
+      default: () => {
+        return {
+          records: [],
+        };
+      },
+    },
+  },
+  methods: {},
+};
+</script>
+<style lang="scss" scoped>
+@import "@/assets/1.0/scss/wallet-bill-list.scss";
+.ui-bar-border:last-child {
+  border: none;
+}
+.message {
+  padding: 0.14rem 0;
+}
+</style>

@@ -1,0 +1,512 @@
+/* 选择材料组件 */
+<template>
+  <div>
+    <transition name="fade">
+      <div class="m-select-material" v-if="isShow">
+        <div class="mask" />
+        <div class="m-content">
+          <div class="icon-close" @click="hide" />
+
+          <div class="ui-material-wrap">
+            <div class="ui-material-content">
+              <div
+                class="m-material-card"
+                v-for="(item, idx) in materialList"
+                :key="idx"
+                :class="{ select: item.select }"
+                @click="onSelect(item, idx)"
+              >
+                <div class="content">
+                  <div class="img-wrap">
+                    <div
+                      class="img-cover"
+                      :style="`background-image:url(${item.commoditySku.cover})`"
+                    ></div>
+                  </div>
+
+                  <div class="info">
+                    <div class="txt">{{ item.commoditySku.name }}</div>
+                    <div class="num">
+                      {{ item.commoditySku.number || 0 }}/{{
+                        item.commoditySku.amountNumber
+                      }}
+                    </div>
+                    <div class="select-icon"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-wrap">
+              <el-pagination
+                :hide-on-single-page="false"
+                @current-change="handleCurrentChange($event)"
+                :current-page="materialPageInfo.current"
+                :page-size="materialPageInfo.size"
+                layout="prev, pager, next"
+                :total="materialPageInfo.total"
+              >
+              </el-pagination>
+            </div>
+          </div>
+          <div class="m-have-select">
+            <div class="title">
+              已选择：{{ userSelectList.length }}/{{ multipleChoiceNum }}
+            </div>
+            <div class="select-wrap">
+              <div
+                class="bar"
+                v-for="(item, idx) in userSelectList"
+                :key="idx"
+                @click="onRemoveUserSelected(item, idx)"
+              >
+                {{ item.commoditySku.name }}
+                {{ item.commoditySku.number || 0 }}/{{
+                  item.commoditySku.amountNumber
+                }}
+                <span class="icon-delete" />
+              </div>
+            </div>
+            <div
+              class="btn btn-red complate-btn"
+              :class="{
+                'btn-disabled': userSelectList.length < multipleChoiceNum,
+              }"
+              @click="onSynthesis"
+            >
+              {{ btnTxt }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
+</template>
+<script>
+export default {
+  components: {},
+  name: "DhSelectMaterial",
+  data() {
+    return {
+      materialList: [],
+      isShow: false,
+      multipleChoiceNum: 1, //应该选择几个材料
+      btnTxt: "合成",
+      materialPageInfo: {
+        current: 0,
+        size: 0,
+        total: 0,
+      },
+      params: {
+        commodityIdList: [],
+        pageCount: 1,
+        pageSize: 12,
+      },
+      userSelectList: [],
+    };
+  },
+  computed: {
+    /*    userSelectList() {
+      return this.materialList.filter((item) => item.select);
+    }, */
+  },
+
+  methods: {
+    show(materialInfo, playInfo) {
+      this.userSelectList = [];
+      this.materialList = [];
+      this.btnTxt = "完成";
+      this.userSelectList = materialInfo.userSelect
+        ? [materialInfo.userSelect]
+        : [];
+
+      this.multipleChoiceNum = materialInfo.amountNeed;
+      this.isShow = true;
+      this.params = {
+        commodityIdList: [materialInfo.id],
+        pageCount: 1,
+        pageSize: 12,
+      };
+
+      this.getUserMaterial();
+    },
+    async getUserMaterial() {
+      const res = await this.$api.$service.treasureSku_listMaterial(
+        this.params
+      );
+      if (res.code == 200) {
+        if (res.data.records && res.data.records.length > 0) {
+          this.materialPageInfo = {
+            current: res.data.current,
+            size: res.data.size,
+            total: res.data.total,
+          };
+          this.materialList = res.data.records.map((item) => {
+            item.select = this.userSelectList.find(
+              (item2) => item2.id == item.id
+            );
+            return item;
+          });
+        }
+      } else {
+        this.$message.warning(res.message);
+      }
+    },
+    createList() {},
+
+    handleCurrentChange(val) {
+      this.params.pageCount = val;
+      this.getUserMaterial();
+    },
+    hide() {
+      this.isShow = false;
+    },
+    init() {
+      this.materialList = this.materialList.map((item) => {
+        item.select = false;
+        return item;
+      });
+    },
+    onSelect(info, idx) {
+      const have_idx = this.userSelectList.findIndex(
+        (item) => item.id == info.id
+      );
+      if (have_idx == -1) {
+        if (this.multipleChoiceNum == 1) {
+          this.materialList = this.materialList.map((item, _idx) => {
+            item.select = _idx == idx;
+            return item;
+          });
+          this.userSelectList = [];
+        }
+        if (this.userSelectList.length < this.multipleChoiceNum) {
+          this.userSelectList.push(info);
+          this.materialList[idx].select = true;
+        }
+      } else {
+        this.userSelectList.splice(have_idx, 1);
+        this.materialList[idx].select = false;
+      }
+    },
+    onRemoveUserSelected(info, idx) {
+      this.userSelectList.splice(idx, 1);
+      this.materialList = this.materialList.map((item) => {
+        if (info.commoditySku.id == item.commoditySku.id) {
+          item.select = false;
+        }
+        return item;
+      });
+    },
+    onSynthesis() {
+      this.$emit("listen", this.userSelectList);
+    },
+  },
+};
+</script>
+<style lang="scss" scoped>
+@import "@/assets/1.0/scss/dunhang-pub.scss";
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.m-select-material {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.43);
+  }
+}
+.m-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  max-width: 1099px;
+  background: #fff7e9;
+  border-radius: 10px;
+  padding: 78px 68px 40px;
+  .icon-close {
+    width: 40px;
+    height: 40px;
+    background: url("//static.theone.art/pc/dunhuang/icon-close.png")
+      no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+    position: absolute;
+    top: 22px;
+    right: 29px;
+  }
+}
+.ui-material-wrap {
+  overflow-y: auto;
+  max-height: 60vh;
+  .ui-material-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+.m-material-card {
+  cursor: pointer;
+  padding: 5px 10px;
+  .content {
+    border: 2px solid transparent;
+  }
+
+  .img-wrap {
+  }
+  .img-cover {
+    display: block;
+    width: 199px;
+    height: 160px;
+    margin-bottom: 21px;
+    border-radius: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .info {
+    padding: 0 10px 15px;
+    position: relative;
+    .select-icon {
+      display: none;
+      width: 38px;
+      height: 38px;
+      background: #d3583f;
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      background: url("//static.theone.art/pc/dunhuang/select-icon.png")
+        no-repeat center;
+      background-size: contain;
+    }
+    .txt {
+      font-size: 14px;
+      color: #c55234;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .num {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e2b57f;
+      text-align: center;
+      margin-top: 10px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url("//static.theone.art/pc/icons/pic_icon_bianhao.png");
+      background-position: center;
+      padding: 6px 10px 6px 16px;
+      min-width: 109px;
+    }
+  }
+  &.select {
+    .content {
+      background-color: #fff;
+      border: 2px solid #d3583f;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .info {
+      .select-icon {
+        display: block;
+      }
+    }
+  }
+}
+/* 用户选中列表 */
+.m-have-select {
+  padding-top: 33px;
+  .title {
+    font-size: 14px;
+    color: #c55234;
+    margin-bottom: 10px;
+  }
+  .select-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 108px;
+    min-height: 50px;
+    overflow-y: auto;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #d3583f;
+    background-color: #fff;
+    padding: 7px 13px;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 32%;
+    margin-bottom: 20px;
+    margin-right: 12px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+    .icon-delete {
+      background: url("//static.theone.art/pc/dunhuang/icon-delete.png")
+        no-repeat center;
+      background-size: contain;
+      display: inline-block;
+      width: 19px;
+      height: 19px;
+      margin-left: 6px;
+      margin-top: 1px;
+    }
+  }
+}
+/* 用户选中列表 -end*/
+.pagination-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+</style> 
+<style lang="scss" scoped>
+@media screen and (max-width: 540px) {
+  .complate-btn {
+    line-height: 0.8rem;
+  }
+  .m-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: inherit;
+    height: 100%;
+    transform: translateX(0) translateY(0);
+    padding: 0.44rem 0.3rem;
+    /*   
+    .icon-close {
+      width: 40px;
+      height: 40px;
+      background: url("//static.theone.art/pc/dunhuang/icon-close.png")
+        no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      position: absolute;
+      top: 22px;
+      right: 29px;
+    } */
+  }
+  .ui-material-wrap {
+    overflow-y: auto;
+    height: 90vh;
+    max-height: inherit;
+    padding-bottom: 6rem;
+  }
+  .m-material-card {
+    border-radius: 0.4rem;
+    padding: 0 0.12rem;
+    width: 50%;
+    margin-bottom: 0.46rem;
+    .img-wrap {
+      padding: 0.38rem 0.46rem 0;
+    }
+    .img-cover {
+      display: block;
+      width: 100%;
+      height: 140px;
+      margin-bottom: 0.4rem;
+      border-radius: 0.2rem;
+    }
+
+    .info {
+      padding-bottom: 0.3rem;
+      .select-icon {
+        display: none;
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+      .txt {
+        font-size: 0.22rem;
+        color: #c55234;
+      }
+      .num {
+        display: inline-block;
+        font-size: 0.24rem;
+        margin: 0.2rem auto 0;
+        padding: 0.12rem 0.2rem 0.12rem 0.32rem;
+        min-width: 2rem;
+      }
+    }
+    &.select {
+      .info {
+        .select-icon {
+          display: block;
+        }
+      }
+    }
+  }
+  .m-have-select {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0.4rem 0.4rem 0 0;
+    padding: 0.28rem 0.4rem;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+    .title {
+      font-size: 14px;
+      color: #c55234;
+      margin-bottom: 10px;
+    }
+    .btn {
+      margin: 0 0.6rem;
+    }
+
+    .select-wrap {
+      display: block;
+      height: 2.8rem;
+      overflow-y: auto;
+      padding: 0 0.6rem;
+    }
+    .bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 0.24rem;
+      background-color: #ffebc8;
+      color: #d3583f;
+      margin-bottom: 0.3rem;
+      padding: 7px 13px;
+      border-radius: 14px;
+      justify-content: space-between;
+      &:hover {
+      }
+      .icon-delete {
+      }
+    }
+  }
+  .m-content {
+    padding-top: 1rem;
+
+    .icon-close {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.2rem;
+    }
+  }
+}
+</style>

@@ -1,0 +1,280 @@
+// 商品价格
+.v1-price {
+    font-weight: bold;
+    color: rgba(244, 163, 58, 1);
+    // background: url(../images/price.png) no-repeat left center;
+    // background-size: 14px 14px;
+    font-size: 14px;
+    // padding-left: 20px;
+    text-align: center;
+    .account-name{
+        font-size: 12px;
+color: #999999;
+font-weight: normal;
+    }
+}
+
+// 商品列表
+.v1-goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+
+    .v1-goods-wrap {
+        width: 25%;
+        position: relative;
+        top: 0;
+        left: 0;
+        .category-more {
+            width: 86%;
+            margin: 0 auto;
+        }
+    }
+}
+
+// 单个商品
+.v1-goods {
+    // width: 260px;
+    padding: 16px 16px 16px;
+    margin: 0 12px 24px;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #e3e3e3;
+    cursor: pointer;
+    transition: box-shadow ease-out 0.16s;
+    .name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 9px 0px rgba(208, 208, 208, 0.5);
+        border: 1px solid #e3e3e3;
+
+        .v1-btn {
+            visibility: visible;
+        }
+        .v1-goods-cover {
+            .mask {
+                opacity: 1;
+            }
+        }
+    }
+    .v1-goods-cover {
+        position: relative;
+        .img-wrap {
+            position: absolute;
+        }
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all ease-out 0.16;
+        }
+        .view {
+            background: url("//static.theone.art/pc/images/user1%402x.png") no-repeat;
+            width: 24px;
+            height: 24px;
+            background-size: 100% 100%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+    }
+    .v1-btn {
+        visibility: hidden;
+    }
+
+    &-operate {
+        @extend .justify-end;
+    }
+
+    &-cover {
+        // animation: swivel 2s infinite;
+        padding-bottom: 100%; //正方向 封面图
+        // height: 228px;
+        margin-bottom: 16px;
+        background: url("/") no-repeat center center;
+        background-size: cover;
+        position: relative;
+
+        .like,
+        .like-active {
+            line-height: 28px;
+            height: 28px;
+            border-radius: 4px;
+            color: #ffffff;
+            padding: 0 11px 0 30px;
+            background: url("//static.theone.art/pc/images/pic-home/market-like.png")
+                no-repeat 8px center rgba($color: #000000, $alpha: 0.7);
+            background-size: 18px 18px;
+            position: absolute;
+            right: 8px;
+            top: 8px;
+        }
+        .like-active {
+            background-image: url("//static.theone.art/pc/images/user3%402x.png");
+        }
+
+        &.yan::before,
+        &.ban::before {
+            background: url("//static.theone.art/pc/images/ban.png") no-repeat;
+            background-size: 24px 24px;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: "";
+            z-index: 9;
+        }
+
+        &.yan::before {
+            background-image: url("//static.theone.art/pc/images/yan.png");
+        }
+
+        .goods-btns {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            a.down {
+                display: block;
+                cursor: pointer;
+                background: url("//static.theone.art/pc/images/pic-home/down.svg") no-repeat
+                    center center;
+                background-size: contain;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    &-line {
+        @extend .justify-between;
+        margin-bottom: 13px;
+
+        &.skuno-line {
+            min-height: 18px;
+        }
+
+        h1 {
+            font-size: 16px;
+            color: #333333;
+            line-height: 20px;
+            font-weight: bold;
+            display: flex;
+            // word-break: break-all;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-right: 20px;
+        }
+
+        p {
+            font-size: 12px;
+            color: rgba($color: #000000, $alpha: 0.7);
+        }
+
+        &-status {
+            display: block;
+            width: 38px;
+            height: 20px;
+            background: no-repeat center center;
+            background-size: contain;
+
+            &.nosell {
+                background-image: url("//static.theone.art/pc/images/pic-home/nosell.png");
+            }
+
+            &.soldout {
+                background-image: url("//static.theone.art/pc/images/soldout.png");
+            }
+        }
+
+        &-title {
+            font-size: 12px;
+            color: rgba($color: #000000, $alpha: 0.4);
+        }
+
+        &-people {
+            color: rgba($color: #000000, $alpha: 0.7);
+            font-size: 14px;
+            background: url("//static.theone.art/pc/images/pic-home/people.png") no-repeat
+                left center;
+            background-size: 14px 14px;
+            padding-left: 20px;
+        }
+
+        &-price {
+            font-size: 14px;
+            font-weight: bold;
+            color: #f4a33a;
+            // background: url(../images/price.png) no-repeat left center;
+            // background-size: 14px 14px;
+            // padding-left: 20px;
+        }
+    }
+}
+
+// 手机适配
+@media screen and (max-width: 541px) {
+    .v1-goods {
+        padding: 0.32rem;
+        margin: 0.32rem;
+
+        &-cover {
+            margin-bottom: 0.32rem;
+
+            .like {
+                line-height: 0.56rem;
+                height: 0.56rem;
+                padding: 0 0.1rem 0 0.6rem;
+                background-size: 0.36rem 0.36rem;
+                right: 0.16rem;
+                top: 0.16rem;
+                font-size: 0.24rem;
+            }
+
+            &.yan::before,
+            &.ban::before {
+                background-size: 24px 24px;
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        &-line {
+            margin-bottom: 0.3rem;
+
+            h1 {
+                font-size: 0.32rem;
+                line-height: 0.44rem;
+            }
+
+            &-title {
+                font-size: 0.24rem;
+            }
+
+            &-people {
+                font-size: 0.28rem;
+                background-size: 0.28rem 0.28rem;
+                padding-left: 0.4rem;
+            }
+
+            &-price {
+                font-size: 0.28rem;
+                background-size: 0.28rem 0.28rem;
+                padding-left: 0.4rem;
+            }
+        }
+    }
+}

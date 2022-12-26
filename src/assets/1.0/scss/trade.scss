@@ -1,0 +1,158 @@
+// 交易
+// class="v1-trade"  使用场景 个人中心-交易相关 （我买入的 我卖出的 我提取的 我发布的）列表
+.v1-trade {
+  padding-top: 32px;
+
+  .trade-item {
+    border: 1px solid #e2e2e2;
+    margin-bottom: 16px;
+
+    .title-line {
+      height: 40px;
+      background: #e5e5e5;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-size: 12px;
+
+      .time {
+        color: rgba($color: #000000, $alpha: 0.4);
+        margin-right: 32px;
+      }
+
+      .title {
+        color: rgba($color: #000000, $alpha: 0.4);
+      }
+
+      p {
+        color: #000000;
+
+        &.copy {
+          background: url("//static.theone.art/pc/images/trade-copy.png")
+            no-repeat center right;
+          background-size: 14px 14px;
+          padding-right: 20px;
+        }
+      }
+    }
+
+    .content-line {
+      display: flex;
+      align-items: center;
+
+      .icon-warm {
+        background: url("//static.theone.art/pc/images/warm.png") no-repeat left
+          3px;
+        background-size: 14px 14px;
+        padding-left: 14px;
+        text-align: left;
+      }
+
+      & > div {
+        border-left: 1px solid #e2e2e2;
+        padding: 20px 24px;
+        height: 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        line-height: 20px;
+        color: rgba($color: #000000, $alpha: 0.7);
+
+        &:first-child {
+          border-left: none;
+        }
+
+        &.wsmall {
+          width: 144px;
+          text-align: center;
+        }
+
+        &.wmiddle {
+          width: 220px;
+          text-align: center;
+        }
+        &.padding-sm {
+          padding: 20px 10px;
+        }
+
+        &.operate {
+          width: 164px;
+
+          > div {
+            div {
+              margin-bottom: 8px;
+              text-align: center;
+
+              &:last-child {
+                margin-bottom: 0px;
+              }
+            }
+          }
+        }
+      }
+
+      .goods {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .goods {
+          align-items: center;
+        }
+
+        .cover {
+          width: 70px;
+          height: 70px;
+          margin-right: 16px;
+          border: 1px solid rgba($color: #000000, $alpha: 0.1);
+          position: relative;
+          border-radius: 2px;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        .info {
+          flex: 1;
+          h1 {
+            font-size: 14px;
+            color: #000000;
+            line-height: 20px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 4px;
+            .txt {
+              flex: 1;
+            }
+            .wsmall {
+              font-size: 12px;
+              color: rgba($color: #000000, $alpha: 0.7);
+            }
+          }
+          .ui-commodity-num {
+            margin-bottom: 4px;
+          }
+          ::v-deep .m-num-wrap {
+            padding: 0;
+          }
+
+          p {
+            font-size: 12px;
+            color: rgba($color: #000000, $alpha: 0.4);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.empty{
+	background-image: url("~@/assets/1.0/images/volume_empty.png");
+	width: 228px;
+	height: 188px;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 100% 158px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	color: #999999;
+	margin: 96px auto 110px;
+}
+@media screen and (max-width:541px){
+	.empty{
+		background-image: url("~@/assets/1.0/images/volume_empty.png");
+		width: 4.56rem;
+		height: 3.76rem;
+		background-position: top;
+		background-repeat: no-repeat;
+		background-size: 100% 3.16rem;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		color: #999999;
+		margin: 1.72rem auto 2.72rem;
+	}
+}

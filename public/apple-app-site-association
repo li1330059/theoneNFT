@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "S9PFXC9AG9.theone.art.app.venue",
+                "paths": [ "/app/*"]
+            },
+            {
+                "appID": "S9PFXC9AG9.theone.art.app.venue.dev",
+                "paths": [ "/app/*"]
+            }
+        ]
+    }
+}

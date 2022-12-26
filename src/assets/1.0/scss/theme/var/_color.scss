@@ -1,0 +1,18 @@
+@import "./base-color";
+$art-money-color: var(--art-money-color, $art-red-10);
+//状态
+$art-danger-color: var(--art-danger-color, $art-red-10); // 失败
+$art-warning-color: var(--art-warning-color, $art-yellow-10); // 警告
+$art-info-color: var(--art-info-color, $art-blue-10); // 通知
+//$art-success-bg: var(--art-success-bg, $art-red-10); // 成功底色
+
+$art-primary-gradient: var(
+  --art-primary-gradient,
+  $art-gradient-red-10
+); // 主要渐变
+
+//分割线
+$art-line-color: var(--art-line-color, $art-grey-50);
+//page背景色
+$art-mobile-bg-color: var(--art-mobile-bg-color, $art-grey-10);
+$art-bg-color: var(--art-bg-color, $art-grey-20);

@@ -1,0 +1,472 @@
+<template>
+  <div>
+    <div class="" v-if="isShow">
+      <div class="dialog-content-wrap">
+        <div class="mask"></div>
+
+        <div
+          class="dialog-content grayscale compose-page synthesis-content-bg-img synthesis-dialog-content-bgcolor"
+        >
+          <div class="ui-icon icon-close hand" @click="onClose"></div>
+          <div v-if="isLoading" class="loading-wrap">
+            <loading />
+          </div>
+
+          <div v-else-if="listData.length > 0">
+            <div class="sku-list-wrap">
+              <div class="sku-title synthesis-selected-checkbox-color">
+                编号选择
+                <el-checkbox :value="isCheckedAll" @change="onCheckAll"
+                  ><span>全选</span></el-checkbox
+                >
+              </div>
+              <div class="list-content">
+                <div
+                  class="sku-bar synthesis-selected-checkbox-color"
+                  v-for="(item, idx) in listData"
+                  :key="idx"
+                >
+                  <el-checkbox
+                    :value="item.checked"
+                    @change="changHandle(item, idx)"
+                    ><div class="number">
+                      {{
+                        $numFormat.getNumStr(item)
+                          ? $numFormat.getNumStr(item)
+                          : "--/--"
+                      }}
+                      <!--       {{ item.commoditySku && item.commoditySku.number }}/{{
+                        item.commoditySku && item.commoditySku.amountNumber
+                          ? item.commoditySku.amountNumber == -1
+                            ? "纪念品"
+                            : item.commoditySku.amountNumber
+                          : "-"
+                      }} -->
+                    </div></el-checkbox
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="v1-pagination">
+              <g-paging
+                :pageChange="handleCurrentChange"
+                :pageSize="listParams.pageSize"
+                :list="listDataInfo.records"
+                :current-page="listDataInfo.current"
+              />
+            </div>
+
+            <div
+              class="compose-btn synthesis-number-btn-bgcolor synthesis-number-btn-color"
+              @click="onSubmit"
+            >
+              确定<span v-if="isProbability"
+                >（概率{{ sumProbability }}%）</span
+              >
+            </div>
+          </div>
+          <div v-else><empty /></div>
+        </div>
+      </div>
+    </div>
+    <selected-confirm
+      ref="SelectedConfirmRef"
+      @listenSure="listenSure"
+    ></selected-confirm>
+    <compose-tip ref="ComposeTipRef"></compose-tip>
+  </div>
+</template>
+<script>
+import SelectedConfirm from "./selected-confirm.vue";
+import empty from "@/components/v1/empty";
+import Loading from "@/components/v1/loading/loading";
+import ComposeTip from "./compose-tip.vue";
+export default {
+  name: "treasure-sku-list",
+  components: { empty, Loading, SelectedConfirm, ComposeTip },
+  data() {
+    return {
+      type: 1,
+      isTypeCommodity4: false,
+      isLoading: true,
+      isCheckedAll: false,
+      commodityInfo: {},
+      isShow: false,
+      listDataInfo: {},
+      listData: [],
+      selectNum: 0,
+      threshold: {},
+      inSelectedSkuList: [],
+      listParams: {
+        pageSize: 20,
+        pageCount: 1,
+      },
+    };
+  },
+  props: {
+    userSelectedRule: {
+      type: Object,
+      default: () => {
+        return {};
+      },
+    },
+    needAmount: {
+      type: Number,
+      default: 0,
+    },
+    probability: {
+      //单个商品概率，typeNumber==1时生效
+      type: Number,
+      default: 0,
+    },
+    haveProbability: {
+      type: Number,
+      default: 0, //已有概率
+    },
+  },
+  async created() {},
+  computed: {
+    isProbability() {
+      if (this.threshold && this.threshold.synthesisDetails) {
+        const idx = this.threshold.synthesisDetails.findIndex((item) => {
+          return parseInt(item.probability) >= 0;
+        });
+        return idx == -1 ? false : true;
+      }
+      return false;
+    },
+    sumProbability() {
+      let probability = this.haveProbability;
+      this.inSelectedSkuList.forEach((item) => {
+        probability += item.probability || 0;
+      });
+      return probability;
+    },
+  },
+  watch: {
+    listData(val) {
+      this.isCheckedAll = val.every((item) => {
+        return item.checked == true;
+      });
+    },
+  },
+
+  methods: {
+    listenSure(type) {
+      this.type = type;
+      this.selecteAll();
+    },
+    onCheckAll() {
+      if (this.isCheckedAll) {
+        //取消全选
+        this.listData = this.listData.map((item) => {
+          item.checked = false;
+          const oldList = JSON.parse(JSON.stringify(this.inSelectedSkuList));
+          const oldIdx = oldList.findIndex((item2) => item2.id == item.id);
+          oldList.splice(oldIdx, 1);
+          this.inSelectedSkuList = oldList;
+          return item;
+        });
+      } else {
+        //全选本页
+        if (this.isTypeCommodity4) {
+          this.$refs.SelectedConfirmRef.show();
+        } else {
+          this.selecteAll();
+        }
+
+        /*    */
+        return;
+        //除本页之外的其他选项
+      }
+    },
+    selecteAll() {
+      const resArr = this.selectedSkuList.filter(
+        (item) => item.commoditySku.commodityId != this.commodityInfo.id
+      );
+
+      let is_tip = false;
+      this.listData = this.listData.map((item, idx) => {
+        //当前一共选择的数量
+        let haveSelectedArr = this.$common.uniqueAry(
+          [...resArr, ...this.inSelectedSkuList],
+          "id"
+        );
+        if (
+          haveSelectedArr.length < this.needAmount ||
+          (this.isProbability && this.sumProbability + item.probability <= 100)
+        ) {
+          const findIdx = this.inSelectedSkuList.findIndex(
+            (item2) => item2.id == item.id
+          );
+          if (findIdx == -1) {
+            if (this.type == 2) {
+              if (item.commodity.typeCommodity != 4) {
+                item.checked = true;
+                this.inSelectedSkuList.push(item);
+              }
+            } else {
+              item.checked = true;
+              this.inSelectedSkuList.push(item);
+            }
+          }
+        } else {
+          is_tip = true;
+        }
+
+        return item;
+      });
+      if (is_tip) {
+        if (this.isProbability) {
+          if (this.sumProbability == 100) {
+            this.$message.warning("您的合成概率已经达到100%，无须再添加。");
+          } else {
+            const goodsName =
+              this.listData[0].commodity.name ||
+              this.listData[0].commoditySku.name;
+            this.$message.warning(`${goodsName}已达最大数量，无法再添加。`);
+          }
+        } else {
+          this.$message.warning("您已选择足够的藏品数量");
+        }
+      }
+    },
+    async init(info, selectedSkuList, threshold) {
+      if (!info.id) {
+        this.$message.warning("缺少入参");
+        return;
+      }
+      this.threshold = threshold;
+
+      this.isCheckedAll = false;
+      this.selectedSkuList = JSON.parse(JSON.stringify(selectedSkuList)); //接收已经选择的列表
+
+      this.inSelectedSkuList = selectedSkuList
+        ? JSON.parse(JSON.stringify(selectedSkuList))
+        : [];
+
+      this.commodityInfo = info;
+
+      this.isShow = true;
+      this.isLoading = true;
+      this.rest();
+      this.getList();
+    },
+    changHandle(info, idx) {
+      const list = JSON.parse(JSON.stringify(this.listData));
+
+      if (info.checked) {
+        const oldList = JSON.parse(JSON.stringify(this.inSelectedSkuList));
+        const oldIdx = oldList.findIndex((item) => item.id == info.id);
+        oldList.splice(oldIdx, 1);
+        this.inSelectedSkuList = oldList;
+      } else {
+        if (
+          this.inSelectedSkuList.length < this.needAmount ||
+          (this.isProbability && this.sumProbability + info.probability <= 100)
+        ) {
+          if (info.commodity.typeCommodity == 4) {
+            this.$refs.ComposeTipRef.show(() => {
+              this.inSelectedSkuList.push(info);
+            }, [info]);
+          } else {
+            this.inSelectedSkuList.push(info);
+          }
+        } else {
+          if (this.isProbability) {
+            if (this.sumProbability == 100) {
+              this.$message.warning("您的合成概率已经达到100%，无须再添加。");
+            } else {
+              this.$message.warning(
+                `${
+                  info.commodity.name || info.commoditySku.name
+                }已达最大数量，无法再添加。`
+              );
+            }
+          } else {
+            this.$message.warning("您已选择足够的藏品数量");
+          }
+          return;
+        }
+      }
+      list[idx].checked = !list[idx].checked;
+      this.listData = list;
+    },
+    handleCurrentChange(val) {
+      this.listParams.pageCount = val;
+      this.getList();
+    },
+    onClose() {
+      this.isShow = false;
+    },
+    rest() {
+      this.listParams.pageCount = 1;
+      this.listDataInfo = {};
+      this.listData = [];
+    },
+    async getList() {
+      this.isTypeCommodity4 = false;
+      this.isLoading = true;
+      const res = await this.$api.service.treasureSku_listMaterial({
+        ...this.listParams,
+        commodityIdList: [this.commodityInfo.id],
+      });
+      this.isLoading = false;
+      this.listDataInfo = res.data.data;
+      const findChecked = (id) => {
+        for (let i = 0; i < this.inSelectedSkuList.length; i++) {
+          if (id == this.inSelectedSkuList[i].id) {
+            return true;
+          }
+        }
+        return false;
+      };
+
+      if (res.data.code == 200) {
+        if (res.data.data.records.length > 0) {
+          this.listData = res.data.data.records.map((item) => {
+            item.checked = findChecked(item.id);
+            if (item.commodity.typeCommodity == 4) {
+              this.isTypeCommodity4 = true;
+            }
+            item.probability = this.probability;
+            return item;
+          });
+        } else {
+          if (this.listParams.pageCount > 1) {
+            this.listDataInfo.current--;
+          }
+        }
+      }
+    },
+    onSubmit() {
+      this.$emit("listen", this.commodityInfo, this.inSelectedSkuList, this);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.loading-wrap {
+  min-height: 30vh;
+  padding-top: 15vh;
+}
+.compose-btn {
+  width: 100%;
+  max-width: 500px;
+  line-height: 50px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin: 42px auto 0;
+  cursor: pointer;
+  user-select: none;
+}
+.dialog-content-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999;
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .dialog-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    /*     background: #e5e3e3; */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1100px;
+    padding: 45px 30px 48px;
+    .icon-close {
+      background-image: url("//static.theone.art/pc/compose/icon-close.png");
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      width: 40px;
+      height: 40px;
+    }
+    .sku-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333333;
+    }
+    .sku-list {
+    }
+    .list-content {
+      display: flex;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      max-height: 50vh;
+      padding: 10px 40px;
+    }
+    .sku-bar {
+      width: 20%;
+      padding: 25px 0;
+    }
+  }
+}
+::v-deep .el-checkbox__inner {
+  background-color: transparent;
+  border: 1px solid #979797;
+}
+/* ::v-deep .el-checkbox__input.is-checked + .el-checkbox__label {
+  color: #e4a516;
+}
+::v-deep .el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #e4a516;
+  border-color: #e4a516;
+  border-radius: 4px;
+} */
+@media screen and (max-width: 540px) {
+  .dialog-content-wrap {
+    .mask {
+    }
+    .dialog-content {
+      width: 95%;
+      .icon-close {
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+      .sku-title {
+      }
+      .sku-list {
+      }
+      .list-content {
+        padding: 0;
+      }
+      .sku-bar {
+        width: 50%;
+      }
+    }
+  }
+  .v1-pagination {
+    padding: 0.5rem 0 0;
+  }
+}
+</style>
+<style lang="scss">
+.compose-page .page-icon {
+  background: #e5e3e3;
+}
+.compose-page {
+}
+</style>

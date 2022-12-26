@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:wb="http://open.weibo.com/wb">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta
+      name="description"
+      content="唯一艺术系国内为数不多的收获两轮国有资本投资、深具品牌影响力的数字艺术电商平台，拥有行业内相对较全的营业相关资质。"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover,user-scalable=no"
+    />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//at.alicdn.com/t/font_3042700_e36hce2k5r5.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.zhimg.com/element-ui@2.13.2/lib/theme-chalk/index.css"
+    />
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script
+      src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <% if (process.env.NODE_ENV==='production' ) { %>
+    <script>
+      var _hmt = _hmt || [];
+    </script>
+    <% } %>
+    <script>
+      var now = new Date().getTime();
+      var cnzz_s_tag = document.createElement("script");
+      cnzz_s_tag.type = "text/javascript";
+      cnzz_s_tag.async = true;
+      cnzz_s_tag.charset = "utf-8";
+      cnzz_s_tag.src =
+        "https://theoneart-public.oss-cn-qingdao.aliyuncs.com/pc/active/11/active_112.js?v=" +
+        now;
+      var root_s = document.getElementsByTagName("script")[0];
+      root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+    </script>
+  </head>
+
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+      }
+      .el-message {
+        top: 20px !important;
+      }
+      .el-message:not(:last-child) {
+        visibility: hidden;
+      }
+    </style>
+    <% if (process.env.NODE_ENV==='production' ) { %>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?37e1f8a986a871fd2944042865a17e6a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script>
+      (function (w, d, n, a, j) {
+        w[n] =
+          w[n] ||
+          function () {
+            (w[n].a = w[n].a || []).push(arguments);
+          };
+		  isWx().then(type => {
+		     if (type != "mini-wx") {
+		       j = d.createElement("script");
+		       j.async = true;
+		       j.src = "https://qiyukf.com/script/ed2a65561c25ae4b982c6193f1adc9fb.js";
+		       d.body.appendChild(j);
+		     }
+		   });
+      })(window, document, "ysf");
+	  function isWx() {
+	      var ua = navigator.userAgent.toLowerCase();
+	      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+	        return new Promise(resolve => {
+	          window.wx.miniProgram.getEnv(function(res) {
+	            if (res.miniprogram) {
+	              resolve("mini-wx");
+	            } else {
+	              resolve("wx");
+	            }
+	          });
+	        });
+	      } else {
+	        return new Promise(resolve => {
+	          resolve("no-wx");
+	        });
+	      }
+	    }
+    </script>
+    <% } %>
+
+    <script src="https://static.theone.art/pc/js/vue%402.6.11.min.js"></script>
+    <script src="https://static.theone.art/pc/js/vue-router%403.3.4.min.js"></script>
+    <script src="https://static.theone.art/pc/js/vuex%403.6.2.min.js"></script>
+    <script src="https://unpkg.zhimg.com/element-ui@2.13.2/lib/index.js"></script>
+    <script src="https://static.theone.art/app/uniapp/js/uni.webview.1.5.2.js"></script>
+
+    <script src="https://theoneart-public.oss-cn-qingdao.aliyuncs.com/pc/ll-bag/js/jq-3.js"></script>
+    <script
+      charset="UTF-8"
+      src="https://theoneart-public.oss-cn-qingdao.aliyuncs.com/pc/sensous/sensorsdata.min.js"
+    ></script>
+  </body>
+</html>

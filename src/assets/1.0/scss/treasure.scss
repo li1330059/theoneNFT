@@ -1,0 +1,144 @@
+.icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.icon-default {
+    background-image: url("//static.theone.art/pc/icons/icon-round-default.png");
+}
+.icon-selected {
+    background-image: url("//static.theone.art/pc/icons/icon-round-selected.png");
+}
+.m-btn-group {
+    display: flex;
+    justify-content: flex-end;
+    .btn {
+        margin-left: 38px;
+    }
+    @media screen and (max-width: 540px) {
+        justify-content: space-around;
+        padding: 0.4rem 0.3rem;
+        .btn {
+            margin: 0;
+        }
+    }
+}
+.btn-center {
+    display: flex;
+    justify-content: center;
+}
+.btn-right {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn {
+    display: inline-block;
+    padding: 0 30px;
+    line-height: 30px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    word-break: keep-all;
+    min-width: 120px;
+    @media screen and (max-width: 540px) {
+        padding: 0 0.3rem;
+        line-height: 0.72rem;
+    }
+}
+.btn-red {
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+}
+.btn-disable {
+    background: #e5e5e5;
+    color: #000000;
+}
+.btn-large {
+    @media screen and (max-width: 540px) {
+        line-height: 0.72rem;
+        padding: 0 0.4rem;
+        font-size: 0.26rem;
+    }
+}
+::v-deep .el-dialog__header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ui-content-wrap {
+    padding: 16px 62px 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    @media screen and (max-width: 540px) {
+        padding: 0;
+    }
+}
+.m-phone-header {
+    display: none;
+    height: 1.08rem;
+    @media screen and (max-width: 540px) {
+        display: block;
+        .main {
+            width: 100%;
+            background: #fff;
+            height: 1.08rem;
+            position: fixed;
+            z-index: 999;
+            padding: 0 0.32rem;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.36rem;
+            font-weight: 500;
+            color: #333333;
+            .icon-direction {
+                display: inline-block;
+                width: 0.4rem;
+                height: 0.4rem;
+                background-image: url("//static.theone.art/pc/icons/icon-left-direction.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .placeholder {
+                width: 0.4rem;
+            }
+            .txt {
+                flex: 1;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+.m-navigation {
+    padding-bottom: 13px;
+    display: block;
+    margin-left:-20px;
+    .main {
+      cursor: pointer;
+      display: inline-block;
+    }
+    .icon-direction {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-image: url("//static.theone.art/pc/icons/icon-left-direction.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: relative;
+      top: 3px;
+    }
+    @media screen and (max-width: 540px) {
+      display: none;
+    }
+  }

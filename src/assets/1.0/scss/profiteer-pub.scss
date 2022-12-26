@@ -1,0 +1,99 @@
+
+.content-w {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color:rgba(0,0,0,.6);
+    padding:58px;
+    border-radius: 10px;
+    @media screen and (max-width: 540px) {
+        max-width: inherit;
+        padding: 0 0.6rem;
+    }
+}
+.responsive-img {
+    display: block;
+    width: 100%;
+}
+.material-wrap {
+    display: flex;
+    margin: 0 -10px;
+}
+.ui-material {
+    margin: 0 10px;
+}
+.ui-preview-wrap {
+    width: 100%;
+    height: 324px;
+    background: no-repeat center #eee;
+    background-size: cover;
+    margin: 0 auto;
+    border-radius: 10px;
+    @media screen and (max-width: 540px) {
+    height:2.38rem;
+    }
+}
+/* 按钮 */
+.btn {
+    line-height: 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease-out 0.16s;
+
+    &:active {
+        opacity: 0.9;
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+    @media screen and (max-width: 540px) {
+        font-size: 0.24rem;
+        line-height: 0.48rem;
+        margin-top: 0.12rem;
+    }
+}
+
+.btn-lg {
+}
+.btn-border {
+    border: 1px solid #FAB707;
+    color: #FAB707;
+
+  
+}
+.btn-red {
+    color: #21283D;
+    background: #FAB707;
+}
+.btn-disabled {
+    background: #cccccc;
+    color: #666666;
+}
+/* 按钮-end */
+
+/* 标题 */
+.content-title {
+    font-size: 20px;
+    font-weight: normal;
+    color: #c55234;
+    text-align: center;
+    background: url("//static.theone.art/pc/dunhuang/icon-title1.png") no-repeat center;
+    background-size: contain;
+    padding: 8px 0;
+    box-sizing: border-box;
+    margin-bottom: 48px;
+    @media screen and (max-width: 540px) {
+        margin-bottom: 0.58rem;
+        font-size: 0.36rem;
+    }
+}
+
+/* 标题-end */
+
+/* 图片置灰 */
+.image-gray {
+ 
+}
+/* 图片置灰end */

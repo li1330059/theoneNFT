@@ -1,0 +1,49 @@
+.ui-btn-group {
+    display: flex;
+    align-items: center;
+}
+.ui-btn-end {
+    justify-content: flex-end;
+}
+.ui-btn-between {
+    justify-content: space-between;
+}
+.ui-btn-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ui-btn {
+    line-height: 30px;
+    border-radius: 15px;
+    padding: 0 15px;
+    min-width: 96px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease-out .16s;
+    user-select: none;
+    &:active{
+     opacity: .9;
+    }
+}
+.ui-btn-red {
+    color: #fff;
+    background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+}
+.ui-btn-default {
+    background: #e5e5e5;
+    color:rgba(0,0,0,.7);
+}
+.ui-btn-disabled {
+    background: #e5e5e5;
+    color:rgba(0,0,0,.7);
+}
+.ui-link-btn {
+    font-size: 14px;
+    font-weight: 400;
+    color: #397fe7;
+    cursor: pointer;
+    display: inline-block;
+    padding-left:4px;
+  }

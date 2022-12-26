@@ -1,0 +1,341 @@
+// 艺术家列表
+.pic-list {
+    width: 1190px;
+    margin: 0 auto;
+    margin-top: 62px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 52px;
+    // justify-content: space-between;
+    .pic-padding {
+      width: 25%;
+      // height: 408px;
+      padding: 0px 12px;
+      margin-bottom: 24px;
+    }
+    .pic-item {
+      height: 408px;
+      // width: 25%;
+      font-size: 12px;
+      color: #7e7e7e;
+
+      // padding: 20px 16px 16px 16px;
+      // margin-bottom: 30px;
+      background: #ffffff;
+      border-radius: 6px;
+      border: 1px solid #e3e3e3;
+      // margin-right: 24px;
+      display: flex;
+      flex-direction: column;
+      &:hover {
+        box-shadow: 0px 2px 16px 0px rgba(182, 182, 182, 0.3);
+      }
+
+      .info {
+        height: 140px;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 3px 3px 0px 0px;
+        padding: 22px 16px 0px 16px;
+        display: flex;
+        flex-direction: column;
+        div {
+          &:nth-child(1) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+          }
+          &:nth-child(2) {
+            font-size: 12px;
+            color: #7e7e7e;
+            line-height: 20px;
+            margin-top: 8px;
+          }
+        }
+        .avatar {
+          width: 54px;
+          height: 54px;
+          overflow: hidden;
+          border-radius: 50%;
+          background: #7e7e7e;
+          background-size: cover;
+        }
+        .name {
+          margin-left: 16px;
+          margin-top: 8px;
+          flex: 1;
+          width: 0;
+          h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+            line-height: 20px;
+          }
+          span {
+            font-size: 12px;
+            color: #979797;
+            line-height: 16px;
+          }
+        }
+        .btn-gz {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          width: 76px;
+          height: 30px;
+          background: linear-gradient(to right,#FF7A64,#E61F1A);
+          border-radius: 15px;
+          line-height: 30px;
+          font-size: 12px;
+          color: #fff;
+          cursor: pointer;
+          position: relative;
+          margin-top: 10px;
+          i {
+            background: url("//static.theone.art/pc/images/pic-home/icon_gz.png") no-repeat;
+            width: 15px;
+            height: 15px;
+            background-size: 100% auto;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 4px;
+            margin-top: 8px;
+            &.active {
+              background: url("//static.theone.art/pc/images/ygz%402x.png") no-repeat;
+              background-size: 100% auto;
+            }
+          }
+          &.active {
+            color: #666;
+            background: #e5e5e5;
+          }
+        }
+      }
+      .img {
+        margin: 16px;
+        background: #ddd;
+        height: 192px;
+        overflow: hidden;
+        cursor: pointer;
+        .imgurl {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center center;
+        }
+      }
+      .content {
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        h1 {
+          flex: 1;
+          color: #000000;
+          font-size: 16px;
+        }
+        span {
+          font-size: 12px;
+          font-weight: 400;
+          color: #000000;
+          cursor: pointer;
+          &:before {
+            content: "";
+            background: url("//static.theone.art/pc/images/pic-home/gz%402x.png") no-repeat;
+            width: 15px;
+            height: 14px;
+            background-size: 100% auto;
+            display: inline-block;
+            vertical-align: middle;
+            margin: -4px 4px 0 0;
+          }
+        }
+        .like-active {
+          &:before {
+            background: url("//static.theone.art/pc/images/user3%402x.png") no-repeat;
+            background-size: 100% auto;
+          }
+        }
+      }
+    }
+    
+  }
+  .imgurl {
+    position: relative;
+    .view {
+      background: url("//static.theone.art/pc/images/user1%402x.png") no-repeat;
+      width: 24px;
+      height: 24px;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+    }
+  }
+  @media screen and (min-width: 541px) and (max-width: 960px) {
+    .pic-list {
+      width: auto;
+      .pic-padding {
+        width: 50%;
+      }
+      // .pic-item {
+      //   margin-bottom: 24px;
+      // }
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .pic-list {
+      width: auto;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0.48rem 0;
+      .pic-padding {
+        width: 100%;
+      }
+      // .pic-item {
+      //   margin-bottom: 24px;
+      // }
+      .pic-padding {
+        width: 100%;
+        padding: 0 0.32rem;
+      }
+      .pic-item {
+        height: 9.26rem;
+        font-size: 0.24rem;
+        color: #7e7e7e;
+        margin-bottom: 0.32rem;
+        background: #ffffff;
+        border-radius: 0.12rem;
+        border: 0.02rem solid #e3e3e3;
+        display: flex;
+        flex-direction: column;
+        &:hover {
+          box-shadow: 0 0.04rem 0.32rem 0 rgba(182, 182, 182, 0.3);
+        }
+        .info {
+          height: 2.96rem;
+          background: rgba(0, 0, 0, 0.04);
+          border-radius: 0.06rem 0.06rem 0 0;
+          padding: 0.44rem 0.32rem 0.2rem 0.32rem;
+          display: flex;
+          flex-direction: column;
+          div {
+            &:nth-child(1) {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+            }
+            &:nth-child(2) {
+              font-size: 0.24rem;
+              color: #7e7e7e;
+              line-height: 0.4rem;
+              margin-top: 0.16rem;
+            }
+          }
+          .avatar {
+            width: 1.08rem;
+            height: 1.08rem;
+            overflow: hidden;
+            border-radius: 50%;
+            background: #7e7e7e;
+          }
+          .name {
+            margin-left: 0.32rem;
+            margin-top: 0.16rem;
+            flex: 1;
+            width: 0;
+            h3 {
+              font-size: 0.28rem;
+              font-weight: bold;
+              color: #000000;
+              line-height: 0.4rem;
+            }
+            span {
+              font-size: 0.24rem;
+              color: #979797;
+              line-height: 0.32rem;
+            }
+          }
+          .btn-gz {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            width: 76px;
+            height: 30px;
+            background: linear-gradient(to right,#FF7A64,#E61F1A);
+            border-radius: 15px;
+            line-height: 30px;
+            font-size: 12px;
+            color: #FFF;
+            cursor: pointer;
+            position: relative;
+            margin-top: 10px;
+            i {
+              background: url("//static.theone.art/pc/images/pic-home/icon_gz.png") no-repeat;
+              width: 15px;
+              height: 15px;
+              background-size: 100% auto;
+              display: inline-block;
+              vertical-align: middle;
+              margin-right: 4px;
+              margin-top: 8px;
+              &.active {
+                background: url("//static.theone.art/pc/images/ygz%402x.png")
+                  no-repeat;
+                background-size: 100% auto;
+              }
+            }
+            &.active {
+              color: #666;
+              background: #eee;
+            }
+          }
+        }
+        .img {
+          margin: 0.32rem;
+          background: #ddd;
+          height: 4.94rem;
+          overflow: hidden;
+          .imgurl {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+          }
+        }
+        .content {
+          padding: 0 0.32rem;
+          display: flex;
+          flex-wrap: wrap;
+          h1 {
+            flex: 1;
+            color: #000000;
+            font-size: 0.32rem;
+          }
+          span {
+            font-size: 0.24rem;
+            font-weight: 400;
+            color: #000000;
+            cursor: pointer;
+            &:before {
+              content: "";
+              background: url("//static.theone.art/pc/images/pic-home/gz%402x.png") no-repeat;
+              width: 15px;
+              height: 14px;
+              background-size: 100% auto;
+              display: inline-block;
+              vertical-align: middle;
+              margin: -4px 4px 0 0;
+            }
+          }
+          .like-active {
+            &:before {
+              background: url("~@/assets/1.0/images/user3@2x.png") no-repeat;
+              background-size: 100% auto;
+            }
+          }
+        }
+      }
+    }
+  }

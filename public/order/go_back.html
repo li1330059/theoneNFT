@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="https://static.theone.art/app/uniapp/js/uni.webview.1.5.2.js"></script>
+</head>
+<body>
+    <script>
+        let ua = navigator.userAgent;
+        if(ua.indexOf('uni-app')>-1){ //在app的webview中打开
+            document.addEventListener('UniAppJSBridgeReady', function() {
+                uni.redirectTo({
+                    url: '/pages/my/mywallet/bhpay/setPwdResult'
+                });
+            });
+        } else { //非app内打开，唤起app
+            var href = "weiyi://abc";
+            var a = document.createElement('a');
+            a.setAttribute('href',href);
+            a.setAttribute('id','goBack');
+            if(document.getElementById('goBack')){
+                document.body.removeChild(document.getElementById('goBack'))
+            }
+            document.body.appendChild(a);
+            a.click()
+        }
+    </script>
+</body>
+</html>

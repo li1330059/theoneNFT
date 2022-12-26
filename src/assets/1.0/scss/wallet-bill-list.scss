@@ -1,0 +1,36 @@
+/* 移动端提现列表样式 */
+.ui-bar-border {
+    border-bottom: 1px solid rgba(151, 151, 151, 0.1);
+}
+
+.line-block {
+    .line-bar {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.24rem;
+        font-weight: 400;
+        color: #999999;
+        padding: 0.14rem 0;
+    }
+    padding-bottom: 0.12rem;
+    padding-top: 0.18rem;
+}
+.red-num {
+    font-size: 0.32rem;
+    font-weight: 800;
+    color: #e61f1a;
+}
+.message {
+    font-size: 0.24rem;
+    font-weight: 400;
+    color: #333333;
+    line-height: 0.34rem;
+    ::v-deepspan {
+        color: #e61f1a;
+    }
+}
+.yellow-num {
+    font-size: 0.32rem;
+    font-weight: 800;
+    color: #f4a33a;
+}

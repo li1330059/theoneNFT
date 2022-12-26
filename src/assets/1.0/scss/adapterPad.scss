@@ -1,0 +1,12 @@
+// pad适配 公共
+@media screen and (max-width: 1200px) {
+    .v1-main {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .v1-goods-list .v1-goods-wrap {
+        width: 50%;
+    }
+}

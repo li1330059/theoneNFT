@@ -1,0 +1,136 @@
+$base-font-color: #2b3358 !default;
+$white: #fff !default;
+
+/* tab
+
+material
+title
+des */
+
+.btn {
+  line-height: 40px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all ease-out 0.16s;
+  &:active {
+    opacity: 0.9;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+  @media screen and (max-width: 540px) {
+    font-size: 0.24rem;
+    line-height: 0.68rem;
+    margin-top: 0.12rem;
+  }
+}
+.btn-border {
+  border: 1px solid transparent;
+}
+
+.btn-linear {
+  color: $base-font-color;
+  background: linear-gradient(270deg, #94aeff 0%, #f0d5ff 100%);
+}
+
+.content-w {
+  width: 100%;
+  max-width: 1199px;
+  margin: 0 auto;
+  @media screen and (max-width: 540px) {
+    max-width: inherit;
+    padding: 0 0.3rem;
+  }
+}
+.responsive-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.bg {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.paly-title {
+  max-width: 462px;
+  margin: 0 auto;
+  padding: 60px 0 20px;
+  text-align: center;
+  h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .txt {
+    margin-bottom: 40px;
+  }
+  @media screen and (max-width: 540px) {
+    h3 {
+      font-size: 0.28rem;
+      margin-bottom: 0.3rem;
+    }
+    .txt {
+      font-size: 0.26rem;
+    }
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.6rem 0 0.2rem;
+  }
+}
+.max-txt-len {
+  /*     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:90%; */
+}
+
+/* .synthesis-btn-border {
+    border-color: #f56262;
+    color: #f56262;
+}
+.synthesis-btn-bg {
+    background: #ff8383;
+    color: #fff;
+}
+.synthesis-btn-selected {
+    color: #fff;
+    background: #ffa2a2;
+}
+.synthesis-base-color {
+    color: #f46262;
+}
+.synthesis-select-border-color {
+    border-color: #f46262;
+}
+.synthesis-content-bg-img {
+    background: url("//static.theone.art/pc/three-feet-boy/content-bg.png") no-repeat center;
+    background-size: cover;
+}
+.synthesis-body-bg-color {
+    background: #fbecdf;
+}
+
+.synthesis-active-txt-color {
+    color: #ff8383;
+}
+.synthesis-tab-color {
+    color: #f56262;
+}
+.synthesis-select-close {
+    background-image: url("//static.theone.art/pc/three-feet-boy/select-close.png");
+}
+.synthesis-select-icon {
+    background-image: url("//static.theone.art/pc/three-feet-boy/selected-icon.png");
+}
+.synthesis-icon-direction {
+    background-image: url("//static.theone.art/pc/three-feet-boy/icon-direction.png");
+}
+.synthesis-icon-collection{
+    background-image:url("//static.theone.art/pc/three-feet-boy/icon-collection.png");
+}
+.btn-disabled {
+    background: #cccccc;
+    color: #666666;
+} */

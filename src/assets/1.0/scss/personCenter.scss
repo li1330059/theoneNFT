@@ -1,0 +1,217 @@
+// 个人中心样式
+
+// 使用场景 个人中心标题部分
+.v1-card-title-mycenter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba($color: #979797, $alpha: 0.2);
+
+  &.black {
+    h1 {
+      color: #000;
+    }
+  }
+
+  h1 {
+    font-size: 14px;
+    color: rgba($color: #000000, $alpha: 0.7);
+    line-height: 20px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba($color: #000000, $alpha: 0.4);
+    display: inline-block;
+
+    &:after {
+      content: "";
+      background: url("//static.theone.art/pc/images/arrowright%402x.png")
+        no-repeat;
+      width: 14px;
+      height: 14px;
+      background-size: 100% 100%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+  }
+}
+
+// 个人中心按钮组
+//  使用场景 个人中心-我的藏品-样式切换按钮组
+.v1-btn-group-mycenter {
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba($color: #000000, $alpha: 0.14);
+
+  .btn-item {
+    width: 48px;
+    border-right: 1px solid rgba($color: #000000, $alpha: 0.14);
+    cursor: pointer;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &.bg {
+      background: no-repeat center center;
+      background-size: 18px 18px;
+    }
+  }
+}
+
+// 个人中心弹框
+.v1-dialog-mycenter {
+  .el-dialog__header {
+    height: 54px;
+    line-height: 54px;
+    padding: 0 24px;
+    border: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+    .el-dialog__title {
+      font-size: 16px;
+    }
+  }
+
+  .el-dialog__body {
+    padding: 24px 24px 32px;
+  }
+
+  .dialog-form {
+    .form-line {
+      &.hov {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+
+        h1 {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 14px;
+      color: rgba($color: #000000, $alpha: 0.4);
+      margin-bottom: 8px;
+      line-height: 20px;
+    }
+
+    .input-line {
+      margin-bottom: 16px;
+      border-radius: 4px;
+
+      &.select-line {
+        position: relative;
+
+        ul {
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+          background: #fff;
+          border: 1px solid rgba($color: #409eff, $alpha: 1);
+          border-top: 0;
+
+          li {
+            line-height: 40px;
+            padding: 0 20px;
+            cursor: pointer;
+            &:hover {
+              background: rgba($color: #000000, $alpha: 0.1);
+            }
+          }
+        }
+      }
+
+      &.password-number {
+        display: flex;
+        justify-content: space-between;
+
+        &.adjacent {
+          justify-content: start;
+
+          .number-input {
+            margin-right: 16px;
+          }
+        }
+
+        .number-input {
+          width: 34px;
+          height: 40px;
+          background: #ffffff;
+          border-radius: 4px;
+        }
+
+        .el-input__inner {
+          padding: 0;
+          text-align: center;
+        }
+      }
+    }
+
+    .form-btns {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      > div {
+        margin-left: 24px;
+      }
+    }
+
+    @media screen and (min-width: 0px) and (max-width: 540px) {
+      .form-btns {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+// 个人中心 眼睛效果
+.v1-btn-eye {
+  background: url("//static.theone.art/pc/images/wallet-eye.png") no-repeat
+    center center;
+  background-size: 18px 18px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  justify-items: flex-end;
+
+  &.hidden {
+    background-image: url("//static.theone.art/pc/images/wallet-eye-hidden.png");
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 540px) {
+  .v1-btn-eye {
+    background: url("//static.theone.art/pc/images/pic-home/m-close%402x.png")
+      no-repeat center center;
+    background-size: 0.36rem 0.36rem;
+    width: 0.36rem;
+    height: 0.36rem;
+    cursor: pointer;
+    justify-items: flex-end;
+
+    &.gray {
+      background: url("//static.theone.art/pc/images/wallet-eye.png") no-repeat
+        center center;
+      background-size: 0.36rem 0.36rem;
+      width: 0.36rem;
+      height: 0.36rem;
+
+      &.hidden {
+        background-image: url("//static.theone.art/pc/images/wallet-eye-hidden.png");
+      }
+    }
+
+    &.hidden {
+      background-image: url("//static.theone.art/pc/images/pic-home/m-open%402x.png");
+    }
+  }
+}

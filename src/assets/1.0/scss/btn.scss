@@ -1,0 +1,198 @@
+// 按钮
+.v1-btn {
+    height: 40px;
+    line-height: 40px;
+    background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+    border-radius: 23px;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+
+    &.grey {
+        background: #e5e5e5;
+        color: rgba($color: #000000, $alpha: 0.7);
+    }
+
+    // 没有背景色
+    &.normal {
+        background: none;
+        border: none;
+        color: #666666;
+    }
+
+    // 不可用
+    &.disable {
+        background: #ddd;
+        border: 1px solid #ddd;
+    }
+
+    // 带边框
+    &.border {
+        border: 1px solid #e61f1a;
+        color: #e61f1a;
+        background: transparent;
+    }
+
+    // 无边框
+    &.no-border {
+        border: 0;
+        box-shadow: none;
+        padding: 0 20px;
+    }
+
+    // 宽度126
+    &.w126 {
+        width: 126px;
+    }
+
+    &.wauto {
+        width: auto !important;
+        padding: 0 40px;
+    }
+
+    // 高度30
+    &.h30 {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+    }
+
+    // mini样式
+    &.mini {
+        height: auto;
+        padding: 5px 10px;
+        line-height: initial;
+        font-size: 12px;
+    }
+
+    // 个人中心 默认按钮 灰色 圆角
+    &.mycenter {
+        width: 96px;
+        height: 30px;
+        background: #e5e5e5;
+        border-radius: 15px;
+        font-size: 14px;
+        color: rgba($color: #000000, $alpha: 0.7);
+        border: none;
+        line-height: 30px;
+
+        &.red {
+            background: linear-gradient(90deg, #ff7a64 0%, #e61f1a 100%);
+            color: #ffffff;
+        }
+    }
+}
+
+// // 带图表 边框 按钮
+// .v1-btn-icon-border {
+//     box-shadow: 0px 2px 4px 0px rgba(140, 140, 140, 0.5);
+//     border-radius: 4px;
+//     border: 1px solid #000000;
+
+//     color: #333333;
+//     padding-right: 10px;
+// }
+
+// // 带动画的按钮
+// @each $name in broken-heart,
+// computer-display,
+// search,
+// share,
+// heart,
+// sale {
+//     .v1-btn-#{$name} {
+//         @extend .v1-btn-icon-border;
+//         background: url('../images/#{$name}.svg') no-repeat 10px center;
+//         background-size: 25px 25px;
+//         padding-left: 40px;
+
+//         &.h30 {
+//             background-size: 20px 20px;
+//             padding-left: 35px;
+//         }
+
+//         &:hover {
+//             background-image: url('../images/#{$name}_200.gif');
+//         }
+//     }
+
+// }
+
+// 文本按钮
+.v1-btn-link {
+    cursor: pointer;
+    color: #999999;
+    line-height: 30px;
+
+    &.orange {
+        color: rgba(253, 86, 0, 1);
+    }
+
+    &.blue {
+        color: rgba(57, 127, 231, 1);
+    }
+}
+
+// 关注按钮
+.v1-btn-attention {
+    &:before {
+        display: inline-block;
+        content: "";
+        width: 15px;
+        height: 15px;
+        background: url("//static.theone.art/pc/images/pic-home/icon_gz.png") no-repeat;
+        background-size: 15px 15px;
+        position: absolute;
+        left: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    background-image: linear-gradient(to right, #ff7a64, #e61f1a);
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    color: #fff;
+    padding-left: 45px;
+    cursor: pointer;
+    position: relative;
+}
+// 已关注按钮
+.v1-btn-followed {
+    background: url("//static.theone.art/pc/images/pic-home/btn-add.png") no-repeat 20px center #e5e5e5;
+    background-size: 18px 18px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    color: rgba($color: #000000, $alpha: 0.7);
+    padding-left: 42px;
+    cursor: pointer;
+}
+
+// .pointer {
+//     cursor: pointer;
+//     &:hover{
+//         opacity: .8;
+//     }
+// }
+
+@media screen and (max-width: 541px) {
+    .v1-btn {
+        line-height: 0.72rem;
+        height: 0.72rem;
+        font-size: 0.28rem;
+    }
+
+    // 关注按钮
+    .v1-btn-attention {
+        // background-size: 0.36rem 0.36rem;
+        width: 2rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        border-radius: 0.3rem;
+        padding-left: 1rem;
+        font-size: 0.24rem;
+    }
+}
